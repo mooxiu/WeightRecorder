@@ -1,10 +1,9 @@
 import 'dart:ffi';
 
-import 'package:flutter/material.dart';
-
 class WeightRecord {
   DateTime recordTime;
   Double weight;
 
+  // constructor
   WeightRecord(this.recordTime, this.weight);
 }

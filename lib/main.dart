@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:weight_recorder/weight_record.dart';
+import 'package:weight_recorder/weight_record_form.dart';
 
 void main() => runApp(MyApp());
 
@@ -44,18 +46,42 @@ class _WeightRecordsState extends State<WeightRecords> {
 
   // _buildRecords(): show weight records as a listview.
   Widget _buildRecords() {
+    if (_myRecords.isEmpty) {
+      return const Center (
+        child: Text(
+        "No Weight Records. Please Input Your Weight By Pushing The Plus Button! ", 
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20
+          ),
+        textAlign: TextAlign.center,
+        ),
+      );  
+    } 
+    
     return ListView.builder(
+      itemCount: _myRecords.length,
       itemBuilder: (BuildContext _context, int index) {
-        // if is empty
-
-        return Text('No Weight Records.');
-        // return null;
+        // ignore: prefer_const_constructors
+        return ListView(
+          children: const <Widget>[
+            Card(
+              child: ListTile(
+                title: Text("Your Daily Weight"),
+                subtitle: Text("This should be the time"),
+              ),
+            )
+          ],
+        );
       },
     );
   }
 
   // _addNew(): navigate to a new page to add weight and time.
   void _addNew() {
-
+    final _formKey = GlobalKey<FormState>();
+    Navigator.of(context).push(
+      Route<>
+    );
   }
 }
